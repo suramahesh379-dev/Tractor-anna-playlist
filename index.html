@@ -1,9 +1,8 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>🚜 Tractor Anna Playlist</title>
 
 <style>
@@ -11,7 +10,7 @@
 margin:0;
 padding:0;
 box-sizing:border-box;
-font-family:Arial, sans-serif;
+font-family:Arial,sans-serif;
 }
 
 body{
@@ -20,52 +19,63 @@ color:white;
 }
 
 .hero{
-background:linear-gradient(135deg,#166534,#0f172a);
-padding:60px 20px;
 text-align:center;
+padding:50px 20px;
+background:linear-gradient(135deg,#166534,#0f172a);
 }
 
 .hero h1{
-font-size:42px;
+font-size:40px;
 margin-bottom:10px;
 }
 
 .hero p{
 font-size:18px;
-opacity:0.9;
-}
-
-.container{
-max-width:1000px;
-margin:auto;
-padding:20px;
 }
 
 .player-card{
+max-width:900px;
+margin:20px auto;
 background:#1e293b;
-padding:20px;
+padding:25px;
 border-radius:20px;
-margin-top:-20px;
-box-shadow:0 10px 30px rgba(0,0,0,.3);
-}
-
-.player-card h2{
-margin-bottom:15px;
 text-align:center;
 }
 
-iframe{
-width:100%;
-height:500px;
-border:none;
-border-radius:12px;
+.cover{
+font-size:80px;
+margin-bottom:15px;
 }
 
-.categories{
+.song-title{
+font-size:24px;
+margin-bottom:15px;
+}
+
+.controls{
+display:flex;
+justify-content:center;
+gap:10px;
+flex-wrap:wrap;
+margin-bottom:20px;
+}
+
+.controls button{
+padding:12px 18px;
+border:none;
+border-radius:30px;
+background:#f59e0b;
+font-weight:bold;
+cursor:pointer;
+}
+
+.cards{
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
 gap:15px;
-margin-top:25px;
+max-width:1000px;
+margin:25px auto;
+padding:0 15px;
 }
 
 .card{
@@ -75,13 +85,9 @@ border-radius:15px;
 text-align:center;
 }
 
-.card h3{
-margin-bottom:10px;
-}
-
-.buttons{
+.links{
 text-align:center;
-margin-top:30px;
+margin:30px 0;
 }
 
 .btn{
@@ -106,86 +112,90 @@ footer{
 background:#111827;
 padding:25px;
 text-align:center;
-margin-top:40px;
+margin-top:30px;
+}
+
+#player{
+width:0;
+height:0;
+overflow:hidden;
 }
 
 @media(max-width:768px){
-
 .hero h1{
 font-size:30px;
 }
-
-iframe{
-height:280px;
+.song-title{
+font-size:20px;
 }
-
 }
 </style>
 </head>
 
 <body>
 
-<section class="hero">
+<div class="hero">
 <h1>🚜 Tractor Anna Playlist</h1>
-<p>
-పొలాల్లో వినే తెలుగు పాటలు • Telugu Classics • Village Vibes
-</p>
-</section>
-
-<div class="container">
+<p>తెలుగు పాటలు • Telugu Classics • Village Vibes</p>
+</div>
 
 <div class="player-card">
 
-<h2>🎵 Telugu Playlist</h2>
+<div class="cover">🚜🎵</div>
 
-<iframe
-src="https://www.youtube.com/embed/videoseries?list=PL5qUIUA-senF-1T8-Re2gKOqY_dtDIeV1"
-title="Tractor Anna Playlist"
-allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-allowfullscreen>
-</iframe>
+<div class="song-title" id="songTitle">
+Tractor Anna Playlist
+</div>
+
+<div class="controls">
+<button onclick="prevSong()">⏮ Previous</button>
+<button onclick="playPause()">▶ Play / Pause</button>
+<button onclick="nextSong()">⏭ Next</button>
+</div>
+
+<p id="status">Click Play to Start</p>
+
+<div id="player"></div>
 
 </div>
 
-<div class="categories">
+<div class="cards">
 
 <div class="card">
 <h3>🎼 Old Gold</h3>
-<p>Evergreen Telugu songs.</p>
+<p>Evergreen Telugu songs</p>
 </div>
 
 <div class="card">
 <h3>❤️ Melody Hits</h3>
-<p>Romantic and soft melodies.</p>
+<p>Beautiful Telugu melodies</p>
 </div>
 
 <div class="card">
 <h3>🚜 Tractor Ride</h3>
-<p>Songs for travel and field work.</p>
+<p>Songs for long rides</p>
 </div>
 
 <div class="card">
 <h3>🌾 Village Songs</h3>
-<p>Traditional Telugu village vibes.</p>
+<p>Traditional village vibes</p>
 </div>
 
 </div>
 
-<div class="buttons">
+<div class="links">
 
 <a class="btn whatsapp"
-href="https://wa.me/?text=Listen%20to%20Tractor%20Anna%20Playlist"
+href="https://wa.me/?text=Check%20out%20Tractor%20Anna%20Playlist"
 target="_blank">
-📲 Share on WhatsApp
+📲 WhatsApp
 </a>
 
 <a class="btn linkedin"
 href="https://www.linkedin.com/in/mahesh-sura-5466a73a5"
 target="_blank">
-💼 Connect on LinkedIn
+💼 LinkedIn
 </a>
-
-</div>
 
 </div>
 
@@ -193,6 +203,88 @@ target="_blank">
 <h3>🚜 Tractor Anna Playlist</h3>
 <p>Made with ❤️ by Mahesh Sura</p>
 </footer>
+
+<script src="https://www.youtube.com/iframe_api"></script>
+
+<script>
+const songs = [
+{
+title:"Song 1",
+id:"1hF05xNRJdI"
+},
+{
+title:"Song 2",
+id:"26qZNn8KXB0"
+},
+{
+title:"Song 3",
+id:"IwAmfFxpuSg"
+},
+{
+title:"Song 4",
+id:"P3PKuW6CSFQ"
+}
+];
+
+let player;
+let current = 0;
+
+function onYouTubeIframeAPIReady(){
+player = new YT.Player('player',{
+height:'0',
+width:'0',
+videoId:songs[0].id
+});
+
+document.getElementById("songTitle").innerText =
+songs[0].title;
+}
+
+function loadSong(index){
+current=index;
+
+document.getElementById("songTitle").innerText =
+songs[current].title;
+
+player.loadVideoById(songs[current].id);
+player.playVideo();
+
+document.getElementById("status").innerText =
+"Playing";
+}
+
+function nextSong(){
+current++;
+if(current>=songs.length){
+current=0;
+}
+loadSong(current);
+}
+
+function prevSong(){
+current--;
+if(current<0){
+current=songs.length-1;
+}
+loadSong(current);
+}
+
+function playPause(){
+
+if(!player) return;
+
+const state=player.getPlayerState();
+
+if(state===1){
+player.pauseVideo();
+document.getElementById("status").innerText="Paused";
+}
+else{
+player.playVideo();
+document.getElementById("status").innerText="Playing";
+}
+}
+</script>
 
 </body>
 </html>
