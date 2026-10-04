@@ -3,9 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>🚜 Tractor Anna Playlist</title>
 
 <style>
+
 *{
 margin:0;
 padding:0;
@@ -20,30 +22,22 @@ overflow-x:hidden;
 }
 
 .hero{
-    min-height:100vh;
-    background:
-    linear-gradient(rgba(0,0,0,.45),rgba(0,0,0,.65)),
-    url("file_0000000080b48207ae1e4fb1f1d5a7fa.png");
-    background-size:cover;
-    background-position:center;
-    background-repeat:no-repeat;
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-    align-items:center;
-    text-align:center;
-}
-
-.hero::before{
-content:'';
-position:absolute;
-inset:0;
-background:rgba(0,0,0,.45);
-}
-
-.hero-content{
 position:relative;
-z-index:2;
+min-height:100vh;
+
+background:
+linear-gradient(rgba(0,0,0,.25),rgba(0,0,0,.55)),
+url("file_0000000080b48207ae1e4fb1f1d5a7fa.png");
+
+background-size:cover;
+background-position:center;
+background-repeat:no-repeat;
+
+display:flex;
+justify-content:center;
+align-items:center;
+text-align:center;
+padding:20px;
 }
 
 .topbar{
@@ -51,48 +45,73 @@ position:absolute;
 top:20px;
 left:20px;
 right:20px;
+
 display:flex;
 justify-content:space-between;
 align-items:center;
-z-index:10;
+z-index:20;
+flex-wrap:wrap;
+gap:10px;
 }
 
 .logo{
-font-size:26px;
+font-size:32px;
 font-weight:bold;
+}
+
+.socials{
+display:flex;
+gap:10px;
+flex-wrap:wrap;
 }
 
 .socials a{
 color:white;
 text-decoration:none;
-margin-left:10px;
-padding:10px 15px;
-border-radius:20px;
-background:rgba(0,0,0,.5);
+padding:10px 16px;
+background:rgba(0,0,0,.55);
+border-radius:30px;
 }
 
-h1{
-font-size:70px;
-font-weight:900;
+.hero-content{
+z-index:5;
+text-shadow:0 2px 15px rgba(0,0,0,.9);
 }
 
 .subtitle{
-letter-spacing:4px;
-margin-top:10px;
-opacity:.9;
+font-size:18px;
+letter-spacing:6px;
+margin-bottom:15px;
+}
+
+h1{
+font-size:80px;
+font-weight:900;
+margin-bottom:15px;
+}
+
+.tagline{
+font-size:22px;
+margin-bottom:30px;
 }
 
 .rotating-disc{
-width:160px;
-height:160px;
+width:180px;
+height:180px;
+margin:auto;
+
 border-radius:50%;
-border:8px solid rgba(255,255,255,.2);
-margin:30px auto;
-display:flex;
-align-items:center;
-justify-content:center;
-font-size:70px;
-animation:spin 8s linear infinite;
+border:8px solid rgba(255,255,255,.25);
+
+overflow:hidden;
+
+animation:spin 10s linear infinite;
+}
+
+.rotating-disc img{
+width:100%;
+height:100%;
+object-fit:cover;
 }
 
 @keyframes spin{
@@ -102,29 +121,40 @@ to{transform:rotate(360deg);}
 
 .player{
 position:fixed;
+bottom:20px;
 left:50%;
-bottom:25px;
 transform:translateX(-50%);
+
 width:95%;
 max-width:1100px;
-background:rgba(0,0,0,.8);
+
+background:rgba(0,0,0,.82);
 backdrop-filter:blur(10px);
-border-radius:40px;
+
+border-radius:35px;
 padding:20px;
+
 display:flex;
 justify-content:space-between;
 align-items:center;
 gap:15px;
+
 z-index:100;
 }
 
 .songinfo{
 flex:1;
+text-align:left;
 }
 
 .songtitle{
-font-size:20px;
+font-size:24px;
 font-weight:bold;
+}
+
+.status{
+opacity:.8;
+margin-top:5px;
 }
 
 .controls{
@@ -135,29 +165,45 @@ flex-wrap:wrap;
 
 .controls button{
 border:none;
-padding:14px 18px;
-border-radius:50px;
-font-size:18px;
 cursor:pointer;
+padding:15px 18px;
+border-radius:50px;
+font-size:20px;
+font-weight:bold;
+}
+
+.main-btn{
 background:#fff;
 }
 
+.horn-btn{
+background:#ffb300;
+}
+
 .footer{
-padding:80px 20px 140px;
+padding:80px 20px 160px;
 text-align:center;
-font-size:18px;
+background:#050505;
 }
 
-.btn{
+.footer h2{
+margin-bottom:10px;
+}
+
+.footer p{
+margin-bottom:20px;
+}
+
+.footer a{
 display:inline-block;
-padding:12px 20px;
-border-radius:30px;
 text-decoration:none;
-margin:10px;
 color:white;
+padding:12px 22px;
+margin:5px;
+border-radius:30px;
 }
 
-.instagram{
+.insta{
 background:#E1306C;
 }
 
@@ -165,34 +211,70 @@ background:#E1306C;
 background:#0A66C2;
 }
 
-.horn-btn{
-background:#ffb300!important;
+.features{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:20px;
+padding:50px 20px;
+background:#080808;
+}
+
+.card{
+background:#111;
+padding:25px;
+border-radius:20px;
+text-align:center;
+}
+
+.card h3{
+margin-bottom:10px;
 }
 
 @media(max-width:768px){
 
 h1{
-font-size:42px;
+font-size:48px;
+}
+
+.subtitle{
+font-size:14px;
+letter-spacing:3px;
+}
+
+.tagline{
+font-size:18px;
+}
+
+.rotating-disc{
+width:140px;
+height:140px;
 }
 
 .player{
 flex-direction:column;
-border-radius:25px;
+text-align:center;
 }
 
-.rotating-disc{
-width:120px;
-height:120px;
-font-size:55px;
+.songinfo{
+text-align:center;
 }
+
+.logo{
+font-size:24px;
 }
+
+}
+
 </style>
 </head>
 
 <body>
 
 <div class="topbar">
-<div class="logo">🚜 Tractor Anna</div>
+
+<div class="logo">
+🚜 Tractor Anna
+</div>
 
 <div class="socials">
 
@@ -205,6 +287,7 @@ font-size:55px;
 </a>
 
 </div>
+
 </div>
 
 <section class="hero">
@@ -217,44 +300,41 @@ TRACTOR ANNA • PLAYLIST
 
 <h1>ట్రాక్టర్ అన్న</h1>
 
-<div class="subtitle">
-TELUGU CLASSICS • VILLAGE VIBES
+<div class="tagline">
+తెలుగు పాటలు • Telugu Classics • Village Vibes
 </div>
 
 <div class="rotating-disc">
-🚜
+<img src="file_0000000080b48207ae1e4fb1f1d5a7fa.png">
 </div>
 
 </div>
 
 </section>
 
-<div class="player">
+<section class="features">
 
-<div class="songinfo">
-<div class="songtitle" id="songTitle">
-Song 1
-</div>
-<div id="status">
-Ready to Play
-</div>
+<div class="card">
+<h3>🌾 Village Songs</h3>
+<p>Traditional Telugu village vibes.</p>
 </div>
 
-<div class="controls">
-
-<button onclick="prevSong()">⏮</button>
-
-<button onclick="playPause()">▶️</button>
-
-<button onclick="nextSong()">⏭</button>
-
-<button class="horn-btn" onclick="playHorn()">
-📯 Horn
-</button>
-
+<div class="card">
+<h3>🎵 Melody Hits</h3>
+<p>Soft and evergreen classics.</p>
 </div>
 
+<div class="card">
+<h3>🚜 Tractor Ride</h3>
+<p>Perfect songs for field work.</p>
 </div>
+
+<div class="card">
+<h3>❤️ Old Gold</h3>
+<p>Golden Telugu favourites.</p>
+</div>
+
+</section>
 
 <div class="footer">
 
@@ -262,17 +342,53 @@ Ready to Play
 
 <p>Made with ❤️ by Mahesh Sura</p>
 
-<a class="btn instagram"
+<a class="insta"
 href="https://www.instagram.com/smash__09"
 target="_blank">
 Instagram
 </a>
 
-<a class="btn linkedin"
+<a class="linkedin"
 href="https://www.linkedin.com/in/mahesh-sura-5466a73a5"
 target="_blank">
 Connect on LinkedIn
 </a>
+
+</div>
+
+<div class="player">
+
+<div class="songinfo">
+
+<div class="songtitle" id="songTitle">
+Nenugaali Gopuram
+</div>
+
+<div class="status" id="status">
+Ready to Play
+</div>
+
+</div>
+
+<div class="controls">
+
+<button class="main-btn" onclick="prevSong()">
+⏮
+</button>
+
+<button class="main-btn" onclick="playPause()">
+▶️
+</button>
+
+<button class="main-btn" onclick="nextSong()">
+⏭
+</button>
+
+<button class="horn-btn" onclick="playHorn()">
+📯 Horn
+</button>
+
+</div>
 
 </div>
 
@@ -286,25 +402,25 @@ Connect on LinkedIn
 
 <script>
 
-const songs = [
+const songs=[
 
 {
-title:"Song 1",
+title:"Nenugaali Gopuram",
 id:"1hF05xNRJdI"
 },
 
 {
-title:"Song 2",
+title:"Melody Song",
 id:"26qZNn8KXB0"
 },
 
 {
-title:"Song 3",
+title:"Village Vibes",
 id:"IwAmfFxpuSg"
 },
 
 {
-title:"Song 4",
+title:"Tractor Ride",
 id:"P3PKuW6CSFQ"
 }
 
@@ -319,18 +435,24 @@ player=new YT.Player('player',{
 
 height:'0',
 width:'0',
-videoId:songs[0].id
+
+videoId:songs[0].id,
+
+playerVars:{
+autoplay:0
+}
 
 });
 
-document.getElementById('songTitle').innerText=songs[0].title;
+document.getElementById("songTitle").innerText=
+songs[0].title;
 }
 
 function loadSong(index){
 
 current=index;
 
-document.getElementById('songTitle').innerText=
+document.getElementById("songTitle").innerText=
 songs[current].title;
 
 player.loadVideoById(
@@ -339,8 +461,8 @@ songs[current].id
 
 player.playVideo();
 
-document.getElementById('status').innerText=
-'Playing';
+document.getElementById("status").innerText=
+"Playing";
 }
 
 function nextSong(){
@@ -367,29 +489,33 @@ loadSong(current);
 
 function playPause(){
 
-if(!player) return;
+if(!player)return;
 
-const state=player.getPlayerState();
+let state=player.getPlayerState();
 
 if(state===1){
 
 player.pauseVideo();
 
-document.getElementById('status').innerText='Paused';
+document.getElementById("status").innerText=
+"Paused";
 
 }else{
 
 player.playVideo();
 
-document.getElementById('status').innerText='Playing';
+document.getElementById("status").innerText=
+"Playing";
+
 }
 }
 
 function playHorn(){
 
-document.getElementById('hornAudio').play();
+document.getElementById("hornAudio").play();
 
 }
+
 </script>
 
 </body>
